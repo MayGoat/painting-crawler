@@ -1,3 +1,22 @@
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL,
+  avatar TEXT,
+  member_type TEXT,
+  registration_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  invite_code TEXT
+);
+
+CREATE TABLE favorite (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  artwork_id INTEGER NOT NULL,
+  favorite_time DATETIME NOT NULL
+);
+
+
+
 CREATE TABLE artwork_vincent (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title_en TEXT DEFAULT '',

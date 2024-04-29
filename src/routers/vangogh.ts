@@ -5,7 +5,7 @@ import { DataTypes, Model, Sequelize, Op, QueryTypes, literal } from "sequelize"
 const router = express.Router();
 export const dbFile = path.join(__dirname, '../../artwork.db');
 
-const sequelize = new Sequelize({
+export const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: dbFile,
     logging: true,
