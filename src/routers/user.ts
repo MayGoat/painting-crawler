@@ -3,9 +3,9 @@ import { sequelize } from './vangogh';
 import express from 'express';
 
 
-const router = express.Router();
+const userRouter = express.Router();
 
-router.post('/users', async (req, res) => {
+userRouter.post('/create', async (req, res) => {
   try {
     const user = await User.create(req.body);
     res.status(201).json(user);
@@ -13,8 +13,21 @@ router.post('/users', async (req, res) => {
     res.status(400).json({ message: error });
   }
 });
+userRouter.get('/findone', async (req: any, res) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        username: req.query.account
+      }
+    });
+    res.json(user);
+  } catch (error) {
+    console.error('Error finding user:', error);
+  }
+});
 
-router.post('/api/users', async (req, res) => {
+
+userRouter.post('/users', async (req, res) => {
   try {
     
     const { username, password, avatar, memberType, inviteCode } = req.body;
@@ -92,10 +105,10 @@ router.post('/api/users', async (req, res) => {
     {
       sequelize,
       modelName: 'User',
-      tableName: 'users',
+      tableName: 'user',
       timestamps: false,
     }
   );
   
 
-export default User;
+  export default userRouter;

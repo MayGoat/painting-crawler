@@ -66,7 +66,7 @@ Favorite.init(
     {
         sequelize,
         modelName: 'Favorite',
-        tableName: 'favorites',
+        tableName: 'favorite',
         timestamps: false,
     }
 );
